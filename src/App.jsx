@@ -7,7 +7,7 @@ export const App = () => {
   // It includes a header with an image and a title, and the Search component
   // The Search component is imported from the components directory
 
-  const[searchTerm, setSearchTerm] = useState('I love marta');
+  const[searchTerm, setSearchTerm] = useState('');
   return (
     <main>
 
@@ -21,6 +21,7 @@ export const App = () => {
                 </header>
             </div>
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+            <h1 className="text-white"> {searchTerm}</h1>
         </div>
     </main>
   )

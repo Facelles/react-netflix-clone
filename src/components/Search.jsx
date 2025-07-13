@@ -12,8 +12,8 @@ export const Search = ({ searchTerm, setSearchTerm }) => {
             type="text" 
             placeholder="Search movie" 
             value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-            />
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
     </div>
   )
