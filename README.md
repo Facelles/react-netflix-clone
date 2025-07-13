@@ -1,12 +1,27 @@
-# React + Vite
+# 🎬 Netflix Clone (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Netflix-inspired movie browsing application built with **React**, designed to let users search and discover movies they might enjoy — without the hassle.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Search movies in real-time
+- 🎨 Clean, modern UI (inspired by Netflix)
+- ⚛️ Built with React and functional components
+- 🌈 Styled with Tailwind CSS / custom CSS
+- 📦 Component-based structure
+- 📷 Hero image and dynamic headings
+- ✅ Responsive and mobile-friendly
 
-## Expanding the ESLint configuration
+## 📸 Preview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![App Screenshot](./screenshot.png) <!-- You can add your own screenshot -->
+
+## 🛠️ Technologies Used
+
+- React
+- Tailwind CSS or custom CSS
+- JavaScript (ES6+)
+- Vite or Create React App (CRA)
+
+## 📂 Folder Structure
+
