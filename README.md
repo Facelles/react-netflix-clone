@@ -14,7 +14,8 @@ A Netflix-inspired movie browsing application built with **React**, designed to 
 
 ## 📸 Preview
 
-![App Screenshot](./screenshot.png) <!-- You can add your own screenshot -->
+![App Screenshot](https://imgur.com/ltsVrwz) 
+![App Screenshot](https://imgur.com/DiYRjWq) 
 
 ## 🛠️ Technologies Used
 
