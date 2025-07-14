@@ -14,8 +14,8 @@ A Netflix-inspired movie browsing application built with **React**, designed to 
 
 ## 📸 Preview
 
-![App Screenshot](https://imgur.com/ltsVrwz) 
-![App Screenshot](https://imgur.com/DiYRjWq) 
+![App Screenshot]([https://imgur.com/ltsVrwz](https://imgur.com/gallery/martflix-IzCipGH#ltsVrwz)) 
+![App Screenshot]([https://imgur.com/DiYRjWq](https://imgur.com/gallery/martflix-IzCipGH#DiYRjWq)) 
 
 ## 🛠️ Technologies Used
 
