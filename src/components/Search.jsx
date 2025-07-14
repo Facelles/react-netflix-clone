@@ -6,7 +6,7 @@ export const Search = ({ searchTerm, setSearchTerm }) => {
   return (
     <div className="search">
         <div>
-            <img src="public/search.svg" alt="seatch" />
+            <img src="/search.svg" alt="seatch" />
 
             <input 
             type="text" 
