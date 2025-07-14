@@ -1,9 +1,10 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Search } from "./components/Search";
 import { Spinner } from "./components/Spinner";
 import { useDebounce } from "react-use";
-import MovieCard from "./components/MovieCard";
 import { updateSearchCount } from "./appwrite";
+import { getTrendingMovies } from "./appwrite";
+import MovieCard from "./components/MovieCard";
 
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
@@ -21,6 +22,7 @@ export const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [movieList, setMovieList] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false);
   const [debounceSearchTerm, setDebounceSearchTerm] = useState('')
 
@@ -68,9 +70,24 @@ export const App = () => {
     }
   };
 
+  const loadTrendingMovies = async () => {
+    try{
+      const movies = await getTrendingMovies();
+
+      setTrendingMovies(movies);
+    }
+    catch (error) {
+      console.error("Error fetching trending movies: ", error);
+    }
+  }
+
   useEffect(() => {
     fetchMovies(debounceSearchTerm);
   }, [debounceSearchTerm]);
+
+  useEffect(() => {
+    loadTrendingMovies();
+  },[]);
 
   return (
     <main>
@@ -83,10 +100,27 @@ export const App = () => {
             </h1>
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </header>
+
         </div>
 
+        {trendingMovies.length > 0 && (
+          <section className="trending">
+            <h2>
+              Trending Movies
+            </h2>
+            <ul>
+              {trendingMovies.map((movie, index) => (
+                <li key={movie.$id}>
+                  <p>{index + 1}</p>
+                  <img src={movie.poster_url} alt={movie.title} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <section className="all-movies">
-          <h2 className="mt-[40px]">All movies</h2>
+          <h2>All movies</h2>
 
           {isLoading ? (
             <Spinner />
