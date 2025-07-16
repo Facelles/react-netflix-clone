@@ -40,13 +40,13 @@ const MovieModal = ({ movie, onClose }) => {
                 <div className="details">
                     <div className="flex flex-col space-y-4">
                         <div className="generes-row">
-                        <p>Genres</p>
-                        <ul className="generes">
-                            {genres.map((genre) => (
-                            <li key={genre.id}>{genre.name}</li>
-                            ))}
-                        </ul>
-                        <button className="home-page" >Visit Home Page → </button>
+                            <p>Genres</p>
+                            <ul className="generes">
+                                {genres.map((genre) => (
+                                <li key={genre.id}>{genre.name}</li>
+                                ))}
+                            </ul>
+                            <button className="home-page" onClick={onClose}>Visit Home Page → </button>
                         </div>
 
                         <div className="overview">

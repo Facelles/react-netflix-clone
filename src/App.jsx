@@ -28,14 +28,7 @@ export const App = () => {
   const [debounceSearchTerm, setDebounceSearchTerm] = useState('')
   const [selectedMovie, setSelectedMovie] = useState(null)
 
-
-
-  // Debounce the search term to avoid too many API calls
-  // This will wait for 500ms after the last change before updating the search term
-  // This is useful to prevent excessive API calls while the user is typing
   useDebounce(() => setDebounceSearchTerm(searchTerm), 500, [searchTerm]);
-
-
 
   const fetchMovieAssets = async (movieId) => {
 
