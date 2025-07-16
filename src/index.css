@@ -63,11 +63,61 @@
     @apply fixed inset-0 bg-black/50 z-50 flex items-center justify-center;
   }
 
-  .modal-wrapper {
-    @apply bg-dark-100 p-5 rounded-2xl shadow-lg shadow-light-100/10 w-full max-w-5xl mx-auto relative z-50;
+  .generes {
+    @apply flex flex-row items-center justify-between gap-3 mt-10;
 
     & h2 {
-      @apply text-left text-2xl font-bold text-white mb-4 mx-3 mt-3;
+      @apply text-white text-xl font-bold;
+    }
+
+    & ul {
+      @apply flex flex-row items-center gap-3 overflow-x-auto hide-scrollbar;
+    }
+
+    & ul li {
+      @apply bg-dark-200 px-4 py-2 rounded-lg text-white font-medium text-sm cursor-pointer;
+    }
+  }
+
+  .details {
+  @apply bg-dark-100 p-5 rounded-2xl shadow-lg shadow-light-100/10 w-full max-w-7xl mx-auto relative z-50;
+
+  & .generes-row {
+    @apply flex items-center justify-between flex-wrap gap-4;
+  }
+
+  & .generes-row p {
+    @apply font-medium text-base text-white;
+  }
+
+  & .generes {
+    @apply flex flex-wrap gap-2;
+
+    & li {
+      @apply bg-dark-200 text-white text-xs px-2 py-1 rounded;
+    }
+  }
+
+  & .home-page {
+    @apply bg-gradient-box text-dark-100 text-sm font-bold px-4 py-1 rounded-lg whitespace-nowrap;
+  }
+
+  & .generes {
+    @apply flex flex-wrap gap-2 ml-46 mt-[-1px];
+
+    & li {
+      @apply bg-dark-200 text-white text-xs px-2 py-1 rounded;
+    }
+
+  }
+}
+
+
+  .modal-wrapper {
+    @apply bg-dark-100 p-5 rounded-2xl shadow-lg shadow-light-100/10 w-full max-w-7xl mx-auto relative z-50;
+
+    & h2 {
+      @apply text-left text-xl text-white mb-4 mx-3 mt-3;
     }
 
     & p {
@@ -75,29 +125,25 @@
     }
 
     .section-header {
-    @apply absolute top-8 right-4 flex flex-row items-start justify-end gap-3 
+    @apply absolute top-8 right-10 flex flex-row items-start justify-end gap-3 
          text-white text-xl bg-dark-200 p-1 rounded-xl shadow-lg;
     }
-  }
-
-  
-
-  .modal-content{
-    @apply relative rounded-lg max-w-lg w-full p-6 z-60;
   }
 
   .images{
     @apply flex gap-4 mt-3 mx-3;
 
     & .first-img {
-      @apply w-[60%] rounded-lg object-cover;
+      @apply w-70 rounded-lg object-cover flex-shrink-0;
     }
 
     & .second-img {
        @apply rounded-lg;
+       flex: 1;
+       width: 100%;
+       min-width: 0;
     }
   }
-
   .trending {
     @apply mt-20;
 
@@ -191,6 +237,10 @@
   -webkit-text-stroke: 5px rgba(206, 206, 251, 0.5);
   font-size: 190px;
   font-family: "Bebas Neue", sans-serif;
+}
+
+@utility bg-gradient-box {
+  @apply bg-gradient-to-r from-[#D6C7FF] to-[#AB8BFF];
 }
 
 @utility hide-scrollbar {

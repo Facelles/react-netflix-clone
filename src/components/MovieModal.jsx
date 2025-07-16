@@ -29,12 +29,30 @@ const MovieModal = ({ movie, onClose }) => {
                 <div className="images">
                     <img  className="first-img h-126" src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title} />
                     <iframe 
-                    className="second-img h-126 w-200px"
+                    className="second-img h-126"
                     src={trailerUrl ? trailerUrl.replace("watch?v=", "embed/") : ""}
                     title="YouTube trailer"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     ></iframe>
+                </div>
+
+                <div className="details">
+                    <div className="flex flex-col space-y-4">
+                        <div className="generes-row">
+                        <p>Genres</p>
+                        <ul className="generes">
+                            {genres.map((genre) => (
+                            <li key={genre.id}>{genre.name}</li>
+                            ))}
+                        </ul>
+                        <button className="home-page" >Visit Home Page → </button>
+                        </div>
+
+                        <div className="overview">
+                            <p>Overview</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
