@@ -14,7 +14,8 @@ A Netflix-inspired movie browsing application built with **React**, designed to 
 
 ## 📸 Preview
 
-![App Screenshot](./screenshot.png) <!-- You can add your own screenshot -->
+<img src="https://i.imgur.com/ltsVrwz.png" width="45%" />
+<img src="https://i.imgur.com/DiYRjWq.png" width="45%" />
 
 ## 🛠️ Technologies Used
 
@@ -22,6 +23,3 @@ A Netflix-inspired movie browsing application built with **React**, designed to 
 - Tailwind CSS or custom CSS
 - JavaScript (ES6+)
 - Vite or Create React App (CRA)
-
-## 📂 Folder Structure
-
