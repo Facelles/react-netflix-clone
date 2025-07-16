@@ -12,6 +12,7 @@
   --color-gray-100: #9ca4ab;
 
   --color-dark-100: #0f0d23;
+  --color-dark-200: #1a1a2e;
 
   --font-dm-sans: DM Sans, sans-serif;
 
@@ -46,6 +47,7 @@
   header img {
     @apply w-full max-w-lg h-auto object-contain mx-auto drop-shadow-md;
   }
+
 }
 
 @layer components {
@@ -55,6 +57,45 @@
 
   .wrapper {
     @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
+  }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 z-50 flex items-center justify-center;
+  }
+
+  .modal-wrapper {
+    @apply bg-dark-100 p-5 rounded-2xl shadow-lg shadow-light-100/10 w-full max-w-5xl mx-auto relative z-50;
+
+    & h2 {
+      @apply text-left text-2xl font-bold text-white mb-4 mx-3 mt-3;
+    }
+
+    & p {
+      @apply text-gray-400 font-medium text-base text-left mx-3;
+    }
+
+    .section-header {
+    @apply absolute top-8 right-4 flex flex-row items-start justify-end gap-3 
+         text-white text-xl bg-dark-200 p-1 rounded-xl shadow-lg;
+    }
+  }
+
+  
+
+  .modal-content{
+    @apply relative rounded-lg max-w-lg w-full p-6 z-60;
+  }
+
+  .images{
+    @apply flex gap-4 mt-3 mx-3;
+
+    & .first-img {
+      @apply w-[60%] rounded-lg object-cover;
+    }
+
+    & .second-img {
+       @apply rounded-lg;
+    }
   }
 
   .trending {

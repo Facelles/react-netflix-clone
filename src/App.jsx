@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Search } from "./components/Search";
 import { Spinner } from "./components/Spinner";
 import { useDebounce } from "react-use";
 import { updateSearchCount } from "./appwrite";
 import { getTrendingMovies } from "./appwrite";
 import MovieCard from "./components/MovieCard";
+import MovieModal from "./components/MovieModal";
 
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
@@ -25,6 +26,7 @@ export const App = () => {
   const [trendingMovies, setTrendingMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false);
   const [debounceSearchTerm, setDebounceSearchTerm] = useState('')
+  const [selectedMovie, setSelectedMovie] = useState(null)
 
 
 
@@ -32,6 +34,52 @@ export const App = () => {
   // This will wait for 500ms after the last change before updating the search term
   // This is useful to prevent excessive API calls while the user is typing
   useDebounce(() => setDebounceSearchTerm(searchTerm), 500, [searchTerm]);
+
+
+
+  const fetchMovieAssets = async (movieId) => {
+
+    try{
+      
+      const[imagesRes, videosRes] = await Promise.all([
+        
+        fetch(`${API_BASE_URL}/movie/${movieId}/images?language=en-US`, API_OPTIONS),
+        fetch(`${API_BASE_URL}/movie/${movieId}/videos?language=en-US`, API_OPTIONS)
+
+      ]);
+
+      const imagesData = await imagesRes.json();
+      const videosData = await videosRes.json();
+
+      const backdrops = imagesData.backdrops.slice(0,2);
+      const trailer = videosData.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+
+      return {
+        backdrops,
+        trailerUrl: trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null,
+        posters: imagesData.posters || [],
+      }
+
+    }
+    catch (er){
+      console.error("Error fetching movie assets: ", er);
+      return { backdrops: [], trailerUrl: null };
+    }
+
+  }
+
+  const fetchMovieDetails = async (movieId) => {
+  try {
+    const res = await fetch(`${API_BASE_URL}/movie/${movieId}?language=en-US`, API_OPTIONS);
+    const data = await res.json();
+
+    const assets = await fetchMovieAssets(movieId);
+
+    setSelectedMovie({ ...data, ...assets });
+  } catch (err) {
+    console.error("Error fetching movie details: ", err);
+  }
+};
 
   const fetchMovies = async (query = '') => {
     setIsLoading(true);
@@ -89,6 +137,12 @@ export const App = () => {
     loadTrendingMovies();
   },[]);
 
+  useEffect(() => {
+    if (selectedMovie) {
+      console.log("Selected movie:", selectedMovie);
+    }
+  },[selectedMovie]);
+
   return (
     <main>
       <div className="pattern">
@@ -108,9 +162,9 @@ export const App = () => {
             <h2>
               Trending Movies
             </h2>
-            <ul>
+            <ul >
               {trendingMovies.map((movie, index) => (
-                <li key={movie.$id}>
+                <li onClick={() => fetchMovieDetails(movie.id)} key={movie.$id}>
                   <p>{index + 1}</p>
                   <img src={movie.poster_url} alt={movie.title} />
                 </li>
@@ -129,11 +183,16 @@ export const App = () => {
           ) : (
             <ul>
               {movieList.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
+                <MovieCard key={movie.id} movie={movie} onClick={() => fetchMovieDetails(movie.id)}/>
               ))}
             </ul>
           )}
         </section>
+
+        {selectedMovie && (
+          <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />
+        )}
+
       </div>
     </main>
   );
