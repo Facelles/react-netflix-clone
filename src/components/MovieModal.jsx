@@ -27,9 +27,9 @@ const MovieModal = ({ movie, onClose }) => {
 
             <div className="modal-content">
                 <div className="images">
-                    <img  className="first-img h-126" src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title} />
+                    <img  className="first-img h-100" src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title} />
                     <iframe 
-                    className="second-img h-126"
+                    className="second-img h-100"
                     src={trailerUrl ? trailerUrl.replace("watch?v=", "embed/") : ""}
                     title="YouTube trailer"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -50,7 +50,28 @@ const MovieModal = ({ movie, onClose }) => {
                         </div>
 
                         <div className="overview">
-                            <p>Overview</p>
+
+                            <section className="grid gap-y-4">
+                                <div className="grid sm:grid-cols-[150px_1fr] grid-cols-1 gap-y-1 sm:gap-x-4">
+                                    <p className="font-semibold text-purple-300">Overview:</p>
+                                    <p className="text-purple-100">{overview || 'No overview available.'}</p>
+                                </div>
+
+                                <div className="grid sm:grid-cols-[150px_1fr] grid-cols-1 gap-y-1 sm:gap-x-4">
+                                    <p className="font-semibold text-purple-300">Release date:</p>
+                                    <p className="text-purple-100">{release_date || 'N/A'}</p>
+                                </div>
+
+                                <div className="grid sm:grid-cols-[150px_1fr] grid-cols-1 gap-y-1 sm:gap-x-4">
+                                    <p className="font-semibold text-purple-300">Budget:</p>
+                                    <p className="text-purple-100">{budget ? `$${budget.toLocaleString()}` : 'N/A'}</p>
+                                </div>
+
+                                <div className="grid sm:grid-cols-[150px_1fr] grid-cols-1 gap-y-1 sm:gap-x-4">
+                                    <p className="font-semibold text-purple-300">Status:</p>
+                                    <p className="text-purple-100">{status || 'N/A'}</p>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>

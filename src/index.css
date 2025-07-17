@@ -144,6 +144,32 @@
        min-width: 0;
     }
   }
+
+ .overview {
+  @apply mt-5 text-gray-200 text-sm font-medium flex items-start gap-4;
+
+  & > p {
+    @apply text-gray-400 w-32;
+  }
+
+  & section {
+    @apply flex flex-col gap-4 flex-1;
+
+    .info-pair {
+      @apply flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4;
+
+      .label {
+        @apply font-semibold text-gradient w-full sm:w-32;
+      }
+
+      .value {
+        @apply text-gradient;
+      }
+    }
+  }
+}
+
+
   .trending {
     @apply mt-20;
 
