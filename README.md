@@ -11,6 +11,7 @@ A Netflix-inspired movie browsing application built with **React**, designed to 
 - 📦 Component-based structure
 - 📷 Hero image and dynamic headings
 - ✅ Responsive and mobile-friendly
+- 🌌 API integrastion
 
 ## 📸 Preview
 
